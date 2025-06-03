@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function validarEmail(email) {
+            return email.includes("@") && email.includes(".");
+        }
+        const emailDigitado = prompt("Digite seu email");
+        if (emailDigitado){
+            alert(validarEmail(emailDigitado)? "Email válido": "Email inválido")
+        };
+        validarEmail(email)
+    </script>
+</body>
+
+</html>
