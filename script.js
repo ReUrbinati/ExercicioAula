@@ -1,12 +1,14 @@
 
-function calculadoraDias(idade) {
-    let total = idade * 365;
-    return total;
+function calculadoraDias(valor) {
+    return valor * 365;
 }
-function imprimir(valor) {
-    alert("Você já viveu" + multiplicador + "dias")
+function imprime(resposta) {
+    document.getElementById('resultado').textContent = "Sua idade em dias é" + resposta;
 }
-let idade = parseInt(prompt("Quantos anos você tem?"));
-let multiplicador = calculadoraDias(idade)
-imprimir(multiplicador)
+document.getElementById('calcularBtn').addEventListener('click', function () {
+    let idade = parseInt(document.getElementById('idadeInput').value);
+    let total = calculadoraDias (idade);
+    imprime(total);
+})
+
 
