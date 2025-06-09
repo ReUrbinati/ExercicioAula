@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Age Calculator')
+      .addItem('Open Calculator', 'showCalculator')
+      .addToUi();
+}
+
+function showCalculator() {
+  var html = HtmlService.createHtmlOutput(`
+    <h1>Age in Days Calculator</h1>
+    <input type="number" id="age" placeholder="Enter your age in years" />
+    <button onclick="calculateDays()">Calculate</button>
+    <div id="result" style="font-size: 24px; color: green;"></div>
+    <script>
+      function calculateDays() {
+        var age = document.getElementById('age').value;
+        if (age) {
+          var days = age * 365.25; // Considering leap years
+          document.getElementById('result').innerText = 'You have lived approximately ' + Math.floor(days) + ' days.';
+        } else {
+          document.getElementById('result').innerText = 'Please enter a valid age.';
+        }
+      }
+    </script>
+  `);
+  SpreadsheetApp.getUi().showModalDialog(html, 'Age Calculator');
+}
+
+</body>
+</html>
